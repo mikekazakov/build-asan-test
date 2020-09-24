@@ -15,4 +15,7 @@ jobs:
           cd main
           bootstrap.bat
         shell: cmd
-
+      - run: |
+          cd main
+          test.bat
+        shell: cmd

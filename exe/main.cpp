@@ -1,0 +1,1 @@
+int main() { (new char[99])[99] = 42; }

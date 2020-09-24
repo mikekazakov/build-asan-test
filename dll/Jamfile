@@ -1,0 +1,3 @@
+lib bug : bug.cpp ;
+exe test : main.cpp bug ;
+install dist : test : <install-dependencies>on <location>./bin ;
