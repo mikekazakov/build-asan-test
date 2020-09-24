@@ -11,4 +11,4 @@ jobs:
         with:
           repository: mikekazakov/build
           path: bb-src
-      - run: echo "Hello, world!"
+      - run: main/bootstrap.bat
