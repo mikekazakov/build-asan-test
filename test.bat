@@ -35,6 +35,32 @@ bin\test.exe
 IF %ERRORLEVEL% EQU 0 EXIT /B 1
 %B2% %OPTIONS% clean
 
+cd ..\unittest
+
+echo "unittest, x64, MD, no ASAN => OK"
+SET OPTIONS=toolset=msvc address-model=64 runtime-link=shared debug-symbols=on debug-store=database
+%B2% %OPTIONS% release
+IF %ERRORLEVEL% NEQ 0 EXIT /B 1
+%B2% %OPTIONS% clean
+
+echo "unittest, x64, MT, no ASAN => OK"
+SET OPTIONS=toolset=msvc address-model=64 runtime-link=static debug-symbols=on debug-store=database
+%B2% %OPTIONS% release
+IF %ERRORLEVEL% NEQ 0 EXIT /B 1
+%B2% %OPTIONS% clean
+
+echo "unittest, x64, MD, ASAN => Error"
+SET OPTIONS=toolset=msvc address-model=64 runtime-link=shared debug-symbols=on debug-store=database address-sanitizer=on
+%B2% %OPTIONS% release
+IF %ERRORLEVEL% EQU 0 EXIT /B 1
+%B2% %OPTIONS% clean
+
+echo "unittest, x64, MT, ASAN => Error"
+SET OPTIONS=toolset=msvc address-model=64 runtime-link=static debug-symbols=on debug-store=database address-sanitizer=on
+%B2% %OPTIONS% release
+IF %ERRORLEVEL% EQU 0 EXIT /B 1
+%B2% %OPTIONS% clean
+
 cd ..\dll
 
 echo "dll, x64, MD, no ASAN => OK"
@@ -101,6 +127,32 @@ SET OPTIONS=toolset=msvc address-model=32 runtime-link=static debug-symbols=on d
 %B2% %OPTIONS% release
 IF %ERRORLEVEL% NEQ 0 EXIT /B 1
 bin\test.exe
+IF %ERRORLEVEL% EQU 0 EXIT /B 1
+%B2% %OPTIONS% clean
+
+cd ..\unittest
+
+echo "unittest, x86, MD, no ASAN => OK"
+SET OPTIONS=toolset=msvc address-model=32 runtime-link=shared debug-symbols=on debug-store=database
+%B2% %OPTIONS% release
+IF %ERRORLEVEL% NEQ 0 EXIT /B 1
+%B2% %OPTIONS% clean
+
+echo "unittest, x86, MT, no ASAN => OK"
+SET OPTIONS=toolset=msvc address-model=32 runtime-link=static debug-symbols=on debug-store=database
+%B2% %OPTIONS% release
+IF %ERRORLEVEL% NEQ 0 EXIT /B 1
+%B2% %OPTIONS% clean
+
+echo "unittest, x86, MD, ASAN => Error"
+SET OPTIONS=toolset=msvc address-model=32 runtime-link=shared debug-symbols=on debug-store=database address-sanitizer=on
+%B2% %OPTIONS% release
+IF %ERRORLEVEL% EQU 0 EXIT /B 1
+%B2% %OPTIONS% clean
+
+echo "unittest, x86, MT, ASAN => Error"
+SET OPTIONS=toolset=msvc address-model=32 runtime-link=static debug-symbols=on debug-store=database address-sanitizer=on
+%B2% %OPTIONS% release
 IF %ERRORLEVEL% EQU 0 EXIT /B 1
 %B2% %OPTIONS% clean
 
