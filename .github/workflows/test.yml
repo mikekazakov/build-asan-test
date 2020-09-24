@@ -3,5 +3,12 @@ on: [push]
 jobs:
   hello:
     runs-on: windows-2019
+    uses: actions/checkout@v2
+    with:
+      path: main
+    uses: actions/checkout@v2
+    with:
+      repository: mikekazakov/build
+      path: bb-src
     steps:
-      - run: echo Hello, world!
+      - run: echo "Hello, world!"
