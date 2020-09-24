@@ -1,0 +1,7 @@
+name: test
+on: [push]
+jobs:
+  hello:
+    runs-on: windows-2019
+    steps:
+      - run: echo Hello, world!
