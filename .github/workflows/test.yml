@@ -12,6 +12,5 @@ jobs:
           repository: mikekazakov/build
           path: bb-src
       - run: main/bootstrap.bat
-        with:
-          shell: cmd
+        shell: cmd
 
