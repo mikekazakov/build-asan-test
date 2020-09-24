@@ -13,6 +13,8 @@ jobs:
           path: bb-src
       - run: dir
         shell: cmd
-      - run: main\bootstrap.bat
+      - run: |
+          cd main
+          bootstrap.bat
         shell: cmd
 
